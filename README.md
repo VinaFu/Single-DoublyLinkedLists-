@@ -80,3 +80,64 @@ myList.display()
 myList.reverse() 
 myList.display() 
 myList.getSize()
+
+
+https://www.geeksforgeeks.org/reverse-a-linked-list/
+单链表：
+
+            class Node(object):
+                def __init__(self, val=None):
+                    self.val = val
+                    self.next = None
+
+            class SingleLinklist(object):
+                def __init__(self):
+                    self.head = None
+                    self.size = 0
+
+                def display(self):
+                    cur = self.head
+                    if self.head == None:
+                        return
+                    else:
+                        while cur:
+                            print(cur.val)
+                            cur = cur.next
+
+                def addHead(self, val):
+                    prev = Node(val)
+                    prev.next = self.head
+                    self.head = prev
+
+                    self.size +=1
+
+                def addTail(self,val):
+                    cur = self.head
+                    newNode = Node(val)
+                    if self.head == None:
+                        self.head = Node(val)
+                    else:
+                        while cur.next:
+                            cur = cur.next
+                        cur.next = newNode
+
+                    self.size +=1
+
+                def reverse(self):
+                    prev = None
+                    cur = self.head
+                    while cur:
+                        nxt = cur.next
+                        cur.next = prev
+                        prev = cur
+                        cur = nxt
+                    self.head = prev
+
+            myList = SingleLinklist()
+            myList.addHead(2) 
+            myList.addHead(1)
+            myList.addTail(3)
+            myList.display()  
+            myList.reverse() 
+            myList.display() 
+            # myList.getSize()
